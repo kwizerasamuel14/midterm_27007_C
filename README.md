@@ -224,4 +224,6 @@ src/main/java/com/fieldmanagement/system/
 
 ## Author
 
+KWIZERA Samuel
+
 Developed for Web Technology Practical Assessment
