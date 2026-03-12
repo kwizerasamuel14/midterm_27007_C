@@ -1,0 +1,117 @@
+{
+  "info": {
+    "name": "Field Employee Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Create Province",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"code\": \"WP\",\n    \"name\": \"Western Province\"\n}"
+        },
+        "url": {"raw": "http://localhost:8080/api/provinces", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "provinces"]}
+      }
+    },
+    {
+      "name": "2. Get All Provinces",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "http://localhost:8080/api/provinces", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "provinces"]}
+      }
+    },
+    {
+      "name": "3. Create Site",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Construction Site A\",\n    \"location\": \"Colombo\",\n    \"description\": \"Main construction site\"\n}"
+        },
+        "url": {"raw": "http://localhost:8080/api/sites", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "sites"]}
+      }
+    },
+    {
+      "name": "4. Get All Sites",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "http://localhost:8080/api/sites", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "sites"]}
+      }
+    },
+    {
+      "name": "5. Create Skill",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Welding\",\n    \"description\": \"Metal welding certification\"\n}"
+        },
+        "url": {"raw": "http://localhost:8080/api/skills", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "skills"]}
+      }
+    },
+    {
+      "name": "6. Get All Skills",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "http://localhost:8080/api/skills", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "skills"]}
+      }
+    },
+    {
+      "name": "7. Create Employee",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john@example.com\",\n    \"phone\": \"0771234567\",\n    \"jobRole\": \"Technician\",\n    \"department\": \"Maintenance\",\n    \"status\": \"Active\",\n    \"provinceId\": 1,\n    \"siteId\": 1,\n    \"skillIds\": [1]\n}"
+        },
+        "url": {"raw": "http://localhost:8080/api/employees", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "employees"]}
+      }
+    },
+    {
+      "name": "8. Get All Employees",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "http://localhost:8080/api/employees", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "employees"]}
+      }
+    },
+    {
+      "name": "9. Get Employees with Pagination and Sorting",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/employees/paginated?page=0&size=5&sortBy=firstName&direction=asc",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "employees", "paginated"],
+          "query": [
+            {"key": "page", "value": "0"},
+            {"key": "size", "value": "5"},
+            {"key": "sortBy", "value": "firstName"},
+            {"key": "direction", "value": "asc"}
+          ]
+        }
+      }
+    },
+    {
+      "name": "10. Get Employees by Province Code",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "http://localhost:8080/api/employees/province/code/WP", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "employees", "province", "code", "WP"]}
+      }
+    },
+    {
+      "name": "11. Get Employees by Province Name",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "http://localhost:8080/api/employees/province/name/Western Province", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "employees", "province", "name", "Western Province"]}
+      }
+    }
+  ]
+}
