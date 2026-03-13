@@ -19,6 +19,12 @@ public class Province {
     
     @OneToMany(mappedBy = "province", cascade = CascadeType.ALL)
     private List<Employee> employees;
+
+    @OneToMany(mappedBy = "province", cascade = CascadeType.ALL)
+    private List<District> districts;
+
+    public List<District> getDistricts() { return districts; }
+    public void setDistricts(List<District> districts) { this.districts = districts; }
     
     public Province() {}
     
