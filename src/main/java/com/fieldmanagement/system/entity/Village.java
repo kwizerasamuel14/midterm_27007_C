@@ -1,5 +1,6 @@
 package com.fieldmanagement.system.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +15,7 @@ public class Village {
 
     @ManyToOne
     @JoinColumn(name = "cell_id", nullable = false)
+    @JsonIgnoreProperties({"villages"})
     private Cell cell;
 
     public Long getId() { return id; }

@@ -85,4 +85,29 @@ public class EmployeeService {
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
+
+    public Employee getEmployeeById(Long id) {
+        return employeeRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Employee not found"));
+    }
+
+    public Employee updateEmployee(Long id, EmployeeDTO dto) {
+        Employee employee = employeeRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Employee not found"));
+        Province province = provinceRepository.findById(dto.getProvinceId())
+            .orElseThrow(() -> new RuntimeException("Province not found"));
+        employee.setFirstName(dto.getFirstName());
+        employee.setLastName(dto.getLastName());
+        employee.setEmail(dto.getEmail());
+        employee.setPhone(dto.getPhone());
+        employee.setJobRole(dto.getJobRole());
+        employee.setDepartment(dto.getDepartment());
+        employee.setStatus(dto.getStatus());
+        employee.setProvince(province);
+        return employeeRepository.save(employee);
+    }
+
+    public void deleteEmployee(Long id) {
+        employeeRepository.deleteById(id);
+    }
 }

@@ -1,5 +1,6 @@
 package com.fieldmanagement.system.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -15,9 +16,11 @@ public class Sector {
 
     @ManyToOne
     @JoinColumn(name = "district_id", nullable = false)
+    @JsonIgnoreProperties({"sectors"})
     private District district;
 
     @OneToMany(mappedBy = "sector", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"sector"})
     private List<Cell> cells;
 
     public Long getId() { return id; }

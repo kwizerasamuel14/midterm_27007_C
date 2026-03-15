@@ -1,5 +1,6 @@
 package com.fieldmanagement.system.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -18,10 +19,12 @@ public class Task {
     
     @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false)
+    @JsonIgnoreProperties({"attendances", "profile", "skills"})
     private Employee employee;
-    
+
     @ManyToOne
     @JoinColumn(name = "site_id", nullable = false)
+    @JsonIgnoreProperties({"tasks", "employees"})
     private Site site;
     
     private LocalDate deadline;

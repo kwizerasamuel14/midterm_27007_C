@@ -1,5 +1,6 @@
 package com.fieldmanagement.system.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -13,6 +14,7 @@ public class EmployeeProfile {
     
     @OneToOne
     @JoinColumn(name = "employee_id", unique = true, nullable = false)
+    @JsonIgnoreProperties({"profile", "attendances", "skills"})
     private Employee employee;
     
     private String address;

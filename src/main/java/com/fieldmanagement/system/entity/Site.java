@@ -1,5 +1,6 @@
 package com.fieldmanagement.system.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -20,9 +21,11 @@ public class Site {
     private String description;
     
     @OneToMany(mappedBy = "site", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"site"})
     private List<Employee> employees;
-    
+
     @OneToMany(mappedBy = "site", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"site"})
     private List<Task> tasks;
     
     public Site() {}

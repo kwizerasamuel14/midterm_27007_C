@@ -1,5 +1,6 @@
 package com.fieldmanagement.system.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class Skill {
     private String description;
     
     @ManyToMany(mappedBy = "skills")
+    @JsonIgnoreProperties({"skills", "attendances", "profile"})
     private List<Employee> employees;
     
     public Skill() {}

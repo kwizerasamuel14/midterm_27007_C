@@ -1,5 +1,6 @@
 package com.fieldmanagement.system.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -32,16 +33,20 @@ public class Employee {
     
     @ManyToOne
     @JoinColumn(name = "province_id", nullable = false)
+    @JsonIgnoreProperties({"employees", "districts"})
     private Province province;
     
     @ManyToOne
     @JoinColumn(name = "site_id")
+    @JsonIgnoreProperties({"employees"})
     private Site site;
     
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"employee"})
     private EmployeeProfile profile;
     
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"employee"})
     private List<Attendance> attendances;
     
     @ManyToMany
@@ -50,6 +55,7 @@ public class Employee {
         joinColumns = @JoinColumn(name = "employee_id"),
         inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
+    @JsonIgnoreProperties({"employees"})
     private List<Skill> skills;
     
     public Employee() {}

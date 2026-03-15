@@ -31,4 +31,15 @@ public class ProvinceController {
     public ResponseEntity<Province> getProvinceById(@PathVariable Long id) {
         return ResponseEntity.ok(provinceService.getProvinceById(id));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Province> updateProvince(@PathVariable Long id, @RequestBody ProvinceDTO dto) {
+        return ResponseEntity.ok(provinceService.updateProvince(id, dto));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProvince(@PathVariable Long id) {
+        provinceService.deleteProvince(id);
+        return ResponseEntity.noContent().build();
+    }
 }

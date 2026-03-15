@@ -33,4 +33,16 @@ public class ProvinceService {
         return provinceRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Province not found"));
     }
+
+    public Province updateProvince(Long id, ProvinceDTO dto) {
+        Province province = provinceRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Province not found"));
+        province.setCode(dto.getCode());
+        province.setName(dto.getName());
+        return provinceRepository.save(province);
+    }
+
+    public void deleteProvince(Long id) {
+        provinceRepository.deleteById(id);
+    }
 }
